@@ -4,13 +4,8 @@
 appVersion: "6.2.4"
 
 image:
-<<<<<<< HEAD
   repository: "docker.elastic.co/elasticsearch/elasticsearch-oss"
   tag: "6.3.1"
-=======
-  repository: "docker.elastic.co/elasticsearch/elasticsearch"
-  tag: "6.0.0"
->>>>>>> Updating according to PR comments
   pullPolicy: "IfNotPresent"
 
 cluster:
