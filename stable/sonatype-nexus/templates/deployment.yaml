@@ -87,8 +87,15 @@ spec:
             - name: NEXUS_RUT_HEADER
               value: "X-Forwarded-User"
             - name: CLIENT_ID
-              value: {{ .Values.nexusProxy.env.clientId | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: nexus-oauth-client-id
+                  key: client_id
             - name: CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: nexus-oauth-client-id
+                  key: client_secret
               value: {{ .Values.nexusProxy.env.clientSecret | quote }}
             - name: ORGANIZATION_ID
               value: {{ .Values.nexusProxy.env.organizationId | quote }}
