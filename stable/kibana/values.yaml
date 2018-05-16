@@ -62,6 +62,7 @@ ingress:
     # - secretName: chart-example-tls
     #   hosts:
     #     - chart-example.local
+  # path: "/*"
 
 # service account that will run the pod. Leave commented to use the default service account.
 # serviceAccountName: kibana
