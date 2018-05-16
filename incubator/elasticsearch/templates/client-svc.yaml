@@ -23,3 +23,21 @@ spec:
     component: "{{ .Values.client.name }}"
     release: {{ .Release.Name }}
   type: {{ .Values.client.serviceType }}
+  {{- if eq .Values.client.serviceType "LoadBalancer" }}
+  {{- if .Values.client.serviceLoadBalancerIP }}
+  loadBalancerIP: {{ .Values.client.serviceLoadBalancerIP | quote }}
+  {{- end }}
+  {{- if .Values.client.serviceLoadBalancerSourceRanges }}
+  loadBalancerSourceRanges:
+    {{- range .Values.client.serviceLoadBalancerSourceRanges }}
+    - {{ . | quote }}
+    {{- end }}
+  {{- end }}
+  {{- end }}
+  {{- if .Values.client.serviceExternalTrafficPolicy }}
+  externalTrafficPolicy: {{ .Values.client.serviceExternalTrafficPolicy }}
+  {{- end }}
+  {{- if .Values.client.serviceExternalIPs }}
+  externalIPs:
+    {{- toYaml .Values.client.serviceExternalIPs | nindent 4 }}
+  {{- end }}
