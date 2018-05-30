@@ -47,8 +47,13 @@ nexusProxy:
     nexusDockerHost:
     nexusHttpHost:
     enforceHttps: false
-    cloudIamAuthEnabled: false
-## If cloudIamAuthEnabled is set to true uncomment the variables below and remove this line
+    cloudIamAuth:
+      enabled: false
+      secrets: {}
+    #   keystore: ""
+    #   password: ""
+
+## If cloudIamAuth.enabled set to true AND you don't supply the secrets out of band, uncomment the variables below and remove this line
   #   clientId: ""
   #   clientSecret: ""
   #   organizationId: ""
