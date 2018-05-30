@@ -68,7 +68,7 @@ spec:
             - name: ALLOWED_USER_AGENTS_ON_ROOT_REGEX
               value: "GoogleHC"
             - name: CLOUD_IAM_AUTH_ENABLED
-              value: {{ .Values.nexusProxy.env.cloudIamAuthEnabled | quote }}
+              value: {{ .Values.nexusProxy.env.cloudIamAuth.enabled | quote }}
             - name: BIND_PORT
               value: {{ .Values.nexusProxy.port | quote }}
             - name: ENFORCE_HTTPS
@@ -83,7 +83,7 @@ spec:
               value: {{ .Values.nexus.nexusPort | quote }}
             - name: UPSTREAM_HOST
               value: "localhost"
-            {{- if .Values.nexusProxy.env.cloudIamAuthEnabled }}
+            {{- if .Values.nexusProxy.env.cloudIamAuth.enabled }}
             - name: NEXUS_RUT_HEADER
               value: "X-Forwarded-User"
             - name: CLIENT_ID
@@ -113,7 +113,7 @@ spec:
           ports:
             - containerPort: {{ .Values.nexusProxy.port }}
               name: nexus-proxy
-          {{- if .Values.nexusProxy.env.cloudIamAuthEnabled }}
+          {{- if .Values.nexusProxy.env.cloudIamAuth.enabled }}
           volumeMounts:
             - mountPath: /nexus-proxy-ks
               name: {{ template "nexus.proxy-ks.name" . }}
@@ -154,7 +154,7 @@ spec:
 {{ toYaml .Values.nexus.securityContext | indent 8 }}
       {{- end }}
       volumes:
-        {{- if .Values.nexusProxy.env.cloudIamAuthEnabled }}
+        {{- if .Values.nexusProxy.env.cloudIamAuth.enabled }}
         - name: {{ template "nexus.proxy-ks.name" . }}
           secret:
             secretName: {{ template "nexus.proxy-ks.name" . }}
