@@ -6,6 +6,9 @@ metadata:
 {{ include "nexus.labels" . | indent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
+  strategy:
+    type: Recreate
+    rollingUpdate: null
   selector:
     matchLabels:
       app: {{ template "nexus.name" . }}
