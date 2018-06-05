@@ -101,7 +101,11 @@ spec:
             - name: AUTH_CACHE_TTL
               value: "60000"
             - name: SESSION_TTL
+              {{- if .Values.nexusProxy.env.sessionTtl }}
+              value: {{ .Values.nexusProxy.env.sessionTtl | quote }}
+              {{- else }}
               value: "86400000"
+              {{- end }}
             {{- end }}
           ports:
             - containerPort: {{ .Values.nexusProxy.port }}
