@@ -52,6 +52,7 @@ nexusProxy:
       secrets: {}
     #   keystore: ""
     #   password: ""
+    sessionTtl: "2147483647" # 24.9 days, the max value of int
 
 ## If cloudIamAuth.enabled set to true AND you don't supply the secrets out of band, uncomment the variables below and remove this line
   #   clientId: ""

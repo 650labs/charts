@@ -90,6 +90,7 @@ The following table lists the configurable parameters of the Nexus chart and the
 | `nexusProxy.env.enforceHttps`               | Allow only https access or not      | `false`                                 |
 | `nexusProxy.env.cloudIamAuth.enabled`       | Enable GCP IAM authentication in Nexus proxy  | `false`                       |
 | `nexusProxy.env.cloudIamAuth.secrets`       | provide secrets for IAM authentication |                                      |
+| `nexusProxy.env.sessionTtl`                 | The TTL (in milliseconds) of a user's session. | `86400000`                   |
 | `persistence.enabled`                       | Create a volume for storage         | `true`                                  |
 | `persistence.accessMode`                    | ReadWriteOnce or ReadOnly           | `ReadWriteOnce`                         |
 | `persistence.storageClass`                  | Storage class of Nexus PVC          | `nil`                                   |
